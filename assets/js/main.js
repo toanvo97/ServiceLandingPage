@@ -1,8 +1,5 @@
 /**
-* Template Name: Bethany - v4.6.0
-* Template URL: https://bootstrapmade.com/bethany-free-onepage-bootstrap-theme/
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
+  Belong to BH Store Website. Remmerber do not copy at all!!!!
 */
 (function() {
   "use strict";
@@ -191,6 +188,10 @@
     selector: '.portfolio-lightbox'
   });
 
+  const btnLightbox = GLightbox({
+    selector: '.btn-lightbox'
+  })
+
   /**
    * Portfolio details slider
    */
@@ -236,6 +237,7 @@
       }
     }
   });
+ 
 
   /**
    * Animation on scroll
