@@ -1,5 +1,6 @@
 .wrapper{
-    display: grid;
+    display: flex;
+    flex-direction: column;
     bottom: 108px;
     position: fixed;
 }
@@ -73,3 +74,24 @@
 {
     color: #fff;
 }
+
+.lienhe_ngay {
+    bottom: 50px;
+    width: fit-content;
+    position: fixed;
+    cursor: pointer;
+    padding: 15px;
+    background-image: linear-gradient(to right, #279cfe, #01c2ce);
+    border-radius: 30px;
+  }
+  
+  .lienhe_ngay p {
+    font-family: 'Times New Roman', Times, serif;
+    width: 100%;
+    text-align: center;
+    color: #fff;
+    font-size: 18px;
+    text-transform: uppercase;
+    margin: 0;
+    font-weight: 600;
+  }

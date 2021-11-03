@@ -256,4 +256,25 @@
     })
   });
 
+ // Hide and Show button contact elements
+  // First hide the wrapper element
+  window.addEventListener('load',() => {
+    $('#wrapper').hide();
+  });
+  //Then set event onClick for button LienHe about Hiding and Showing the element  
+  var hideElement=1;
+  var hideInput=document.getElementsByClassName("hidden");
+  document.getElementById("show").onclick = function () {
+    for(var i=0; i!=hideInput.length;i++){
+      if(hideElement==1){
+        hideInput[i].style.display="flex";
+        return  hideElement=0;   
+      }else{
+        hideInput[i].style.display="none";
+        return  hideElement=1;   
+      }
+    }
+   
+  };
+
 })()
