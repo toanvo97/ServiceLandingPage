@@ -7,7 +7,7 @@
 # General
 ============================================================*/
 body {
-  font-family: "Open Sans", sans-serif;
+  font-family: "Segoe UI", Helvetica, Arial, sans-serif;
   color: #444444;
 }
 
@@ -22,7 +22,7 @@ a:hover {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Raleway", sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
 }
 #zalo{
   text-indent: -99999px;
@@ -778,13 +778,13 @@ section {
   width: 64px;
   height: 64px;
   border-radius: 50px;
-  border: 1px solid #009970;
+  border: 1px solid #279cfe;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 20px;
   transition: ease-in-out 0.3s;
-  color: #009970;
+  color: #279cfe;
 }
 .services .icon-box .icon i {
   font-size: 28px;
@@ -808,11 +808,11 @@ section {
   box-shadow: 0px 0 25px 0 rgba(0, 0, 0, 0.1);
 }
 .services .icon-box:hover h4 a {
-  color: #009970;
+  color: #279cfe;
 }
 .services .icon-box:hover .icon {
   color: #fff;
-  background: #009970;
+  background: #279cfe;
 }
 .servicesWindown {    
   position:fixed;    
@@ -982,6 +982,7 @@ section {
 }
 .portfolio-details .portfolio-details-slider img {
   width: 100%;
+  height: 100vh;
 }
 .portfolio-details .portfolio-details-slider .swiper-pagination {
   margin-top: 20px;
@@ -992,10 +993,10 @@ section {
   height: 12px;
   background-color: #fff;
   opacity: 1;
-  border: 1px solid #009970;
+  border: 1px solid #DAA520;
 }
 .portfolio-details .portfolio-details-slider .swiper-pagination .swiper-pagination-bullet-active {
-  background-color: #009970;
+  background-color: #DAA520;
 }
 .portfolio-details .portfolio-info {
   padding: 30px;
@@ -1027,7 +1028,11 @@ section {
 .portfolio-details .portfolio-description p {
   padding: 0;
 }
-
+@media(max-width:425px){
+  .portfolio-details .portfolio-details-slider img {
+    height: 50vh;
+  }
+}
 /*============================================================
 # feedback
 ============================================================*/
@@ -1094,10 +1099,10 @@ section {
   height: 12px;
   background-color: #fff;
   opacity: 1;
-  border: 1px solid #009970;
+  border: 1px solid #DAA520;
 }
 .feedback .swiper-pagination .swiper-pagination-bullet-active {
-  background-color: #009970;
+  background-color: #DAA520;
 }
 
 /*============================================================
@@ -1499,5 +1504,101 @@ section {
   background: #f0c049;
   color: #fff;
   text-decoration: none;
+}
+
+/*============================================================
+# suggestion
+============================================================*/
+.suggestion{
+  background:none;
+}
+.suggestion .section-title{
+  background: #f0c049;
+  height: 50px;
+}
+.suggestion .suggestion-carousel, .suggestion .suggestion-slider {
+  overflow: hidden;
+}
+.suggestion .section-title a h5:hover{
+  color: #f3d381;
+}
+.suggestion .section-title h2,
+.suggestion .section-title p
+{
+  color: #fff;
+  font-size:24px;
+  padding: 12px;
+  display: inline-block;
+}
+.suggestion .section-title h5{
+  padding: 5px;
+  color: #fff;
+  position: absolute;
+    float: right;
+    right: 15px;
+    bottom: 0;
+}
+.suggestion .section-title h2::after{
+  background: none;
+}
+.suggestion .suggestion-item {
+  box-sizing: content-box;
+  /* padding: 30px 30px 0 30px; */
+  margin: 30px 15px;
+  text-align: center;
+  min-height: 350px;
+  box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.08);
+  background: #fff;
+  border: solid 1px #eeeeee;
+}
+.suggestion .suggestion-item .suggestion-img {
+  width: 100%;
+  /* border-radius: 50%; */
+  /* border: 4px solid #fff; */
+  margin: 0 auto;
+}
+.suggestion .suggestion-item h3 {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 10px 0 5px 0;
+  color: #111;
+}
+.suggestion .suggestion-item h4 {
+  font-size: 20px;
+  color: #ed0000;
+  margin: 0;
+}
+.suggestion .suggestion-item .quote-icon-left, .suggestion .suggestion-item .quote-icon-right {
+  color: #00cc95;
+  font-size: 26px;
+}
+.suggestion .suggestion-item .quote-icon-left {
+  display: inline-block;
+  left: -5px;
+  position: relative;
+}
+.suggestion .suggestion-item .quote-icon-right {
+  display: inline-block;
+  right: -5px;
+  position: relative;
+  top: 10px;
+}
+.suggestion .suggestion-item p {
+  font-style: italic;
+  margin: 0 auto 15px auto;
+}
+.suggestion .swiper-pagination {
+  margin-top: 20px;
+  position: relative;
+}
+.suggestion .swiper-pagination .swiper-pagination-bullet {
+  width: 12px;
+  height: 12px;
+  background-color: #fff;
+  opacity: 1;
+  border: 1px solid #DAA520;
+}
+.suggestion .swiper-pagination .swiper-pagination-bullet-active {
+  background-color: #DAA520;
 }
 

@@ -1,6 +1,3 @@
-Thanks for downloading this template!
+This source code is belong to BH Store. Do not copy at any method. Thanks !!!!
 
-Template Name: Bethany
-Template URL: https://bootstrapmade.com/bethany-free-onepage-bootstrap-theme/
-Author: BootstrapMade.com
-License: https://bootstrapmade.com/license/
+Template Name: BH Store

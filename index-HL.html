@@ -9,6 +9,8 @@
   <meta content="" name="description">
   <meta content="" name="keywords">
 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
   <link href="assets/img/favicon.png" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
@@ -26,8 +28,8 @@
   <link href="assets/css/custom.css" rel="stylesheet">
 
   <link rel="stylesheet" href="./assets/vendor/fancybox/dist/jquery.fancybox.min.css">
-
-  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+<!-- 
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script> -->
   
   <!-- Hide the wrapper element when first page loading -->
   <style>
@@ -457,7 +459,7 @@
     </section>
     <!-- End Services Section -->
 
-    <!-- ======= Portfolio Section ======= -->
+    <!-- ======= Product Portfolio Section ======= -->
     <section id="portfolio" class="portfolio">
       <div class="container">
 
@@ -470,8 +472,8 @@
           <div class="col-lg-12 d-flex justify-content-center">
             <ul id="portfolio-flters">
               <li data-filter="*" class="filter-active">Tất cả</li>
-              <li data-filter=".filter-app">Máy tính</li>
-              <li data-filter=".filter-card">Máy in</li>
+              <li data-filter=".filter-pc">Máy tính</li>
+              <li data-filter=".filter-printer">Máy in</li>
               <li data-filter=".filter-web">Web</li>
             </ul>
           </div>
@@ -479,7 +481,7 @@
 
         <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
 
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+          <div class="col-lg-4 col-md-6 portfolio-item filter-pc">
             <div class="portfolio-wrap">
               <img src="assets/img/product/laptop-1.jpg" class="img-fluid" alt="">
               <div class="portfolio-info">
@@ -493,7 +495,7 @@
             </div>
           </div>
 
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+          <div class="col-lg-4 col-md-6 portfolio-item filter-pc">
             <div class="portfolio-wrap">
               <img src="assets/img/product/combo-keyboard-mouse.jpg" class="img-fluid" alt="">
               <div class="portfolio-info">
@@ -507,7 +509,7 @@
             </div>
           </div>
 
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+          <div class="col-lg-4 col-md-6 portfolio-item filter-pc">
             <div class="portfolio-wrap">
               <img src="assets/img/product/ssd-1.jpg" class="img-fluid" alt="">
               <div class="portfolio-info">
@@ -521,7 +523,7 @@
             </div>
           </div>
 
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+          <div class="col-lg-4 col-md-6 portfolio-item filter-pc">
             <div class="portfolio-wrap">
               <img src="assets/img/product/ssd-2.jpg" class="img-fluid" alt="">
               <div class="portfolio-info">
@@ -535,7 +537,7 @@
             </div>
           </div>
 
-          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
+          <div class="col-lg-4 col-md-6 portfolio-item filter-printer">
             <div class="portfolio-wrap">
               <img src="assets/img/product/rsz_3laptop-2.jpg" class="img-fluid" alt="">
               <div class="portfolio-info">
@@ -828,11 +830,11 @@
         </div>
       </div>
       <div class="social-links text-center text-md-right pt-3 pt-md-0">
-        <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+        <!-- <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a> -->
         <a href="https://www.facebook.com/bhstore.page" class="facebook"><i class="bx bxl-facebook"></i></a>
         <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
         <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
-        <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+        <a href="#" class="youtube"><i class="bx bxl-youtube"></i></a>
       </div>
     </div>
   </footer>
@@ -854,17 +856,73 @@
   <div class="wrapper hidden" id="wrapper" >
       <div class="button">
         <div class="icon">
-          <i class="fab fa-facebook-f"></i>
+          <i class="fa fa-facebook-f"></i>
         </div>
         <a href="https://www.facebook.com/bhstore.page"><span>BH Store</span></a>
       </div>
+      <div class="button" id="myBtn">
+        <div class="icon">
+          <i class="fa fa-envelope"></i>
+        </div>
+       <span>Gửi mail cho BH Store</span>
+      </div>
+      <div class="button">
+        <a href="http://zalo.me/0934.12.03.44" target="_blank">
+          <div class="icon">
+           <img class="zalo" src="./assets/img/icon/zalo.png" alt="">
+          </div>
+          <span>Hỗ trợ kỹ Thuật BH Store</span></a>
+      </div>
+      <div class="button">
+        <a href="https://goo.gl/maps/hYDScw8M8hvdE6R29" target="_blank">
+          <div class="icon">
+            <img class="map" src="./assets/img/icon/GoogleMap_Icon.png" alt="">
+          </div>
+          <span>Xem đường dẫn đến BH Store</span></a>
+      </div>
       <div class="button">
         <div class="icon">
-          <i class="fab fa-youtube"></i>
+          <i class="fa fa-phone"></i>
         </div>
-        <a href="#"><span>Youtube</span></a>
+        <a href="tel:0934.12.03.44"><span>Mr.Bảo (0934.12.03.44)</span></a>
       </div>
+      <!-- src="views/template/frontend/images/GoogleMap_Icon.png" -->
   </div>
+
+  <!-- Modal popup sending mail -->
+  <div id="myModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Để lại thông tin liên hệ</h2>
+      <form action="forms/contact.php" method="post" role="form" class="php-email-form mt-4">
+        <div class="row">
+          <div class="col-md-12 form-group mt-3">
+            <input type="text" name="name" class="form-control" id="name" placeholder="Họ và tên" required>
+          </div>
+          <div class="col-md-12 form-group mt-3">
+            <input type="email" class="form-control" name="email" id="email" placeholder="Email" required>
+          </div>
+        </div>
+        <div class="form-group mt-3">
+          <input type="text" class="form-control" name="subject" id="subject" placeholder="Tiêu đề" required>
+        </div>
+        <div class="form-group mt-3">
+          <textarea class="form-control" name="message" rows="5" placeholder="Lời nhắn" required></textarea>
+        </div>
+        <div class="my-3">
+          <div class="loading">Loading</div>
+          <div class="error-message"></div>
+          <div class="sent-message">Tư vấn đã được gửi, cảm ơn!</div>
+        </div>
+        <div class="text-center"><button type="submit">Gửi</button></div>
+      </form>
+    </div>
+  
+  </div>
+  
+  
   
   <!-- Vendor JS Files -->
   <script src="assets/vendor/aos/aos.js"></script>
