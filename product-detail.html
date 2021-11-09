@@ -9,6 +9,8 @@
   <meta content="" name="description">
   <meta content="" name="keywords">
 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
   <link href="assets/img/favicon.png" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
@@ -25,8 +27,6 @@
  
   <link href="assets/css/style.css" rel="stylesheet">
   <link href="assets/css/custom.css" rel="stylesheet">
-
-  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
   
   <!-- Hide the wrapper element when first page loading -->
   <style>
@@ -45,7 +45,7 @@
     <div class="container">
       <div class="header-container d-flex align-items-center justify-content-between">
         <div class="logo">
-          <h1 class="text-light"><a href="index-HL.html"><span>BH Store</span></a></h1>
+          <h1 class="text-light"><a href="index.html"><span>BH Store</span></a></h1>
           <!-- Uncomment below if you prefer to use an image logo -->
           <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
         </div>
@@ -97,7 +97,7 @@
         <div class="d-flex justify-content-between align-items-center">
           <h2>Chi tiết sản phẩm</h2>
           <ol>
-            <li><a href="index-HL.html">Trang chủ</a></li>
+            <li><a href="index.html">Trang chủ</a></li>
             <li>Chi tiết sản phẩm</li>
           </ol>
         </div>
@@ -338,21 +338,75 @@
     <p>Liên hệ</p>
   </div>
     
-  <!-- Buttons Contact left -->
-  <div class="wrapper hidden" id="wrapper" >
-      <div class="button">
-        <div class="icon">
-          <i class="fab fa-facebook-f"></i>
-        </div>
-        <a href="https://www.facebook.com/bhstore.page"><span>BH Store</span></a>
-      </div>
-      <div class="button">
-        <div class="icon">
-          <i class="fab fa-youtube"></i>
-        </div>
-        <a href="#"><span>Youtube</span></a>
-      </div>
+ <!-- Buttons Contact left -->
+ <div class="wrapper hidden" id="wrapper" >
+  <div class="button">
+    <div class="icon">
+      <i class="fa fa-facebook-f"></i>
+    </div>
+    <a href="https://www.facebook.com/bhstore.page"><span>BH Store</span></a>
   </div>
+  <div class="button" id="myBtn">
+    <div class="icon">
+      <i class="fa fa-envelope"></i>
+    </div>
+   <span>Gửi mail cho BH Store</span>
+  </div>
+  <div class="button">
+    <a href="http://zalo.me/0934.12.03.44" target="_blank">
+      <div class="icon">
+       <img class="zalo" src="./assets/img/icon/zalo.png" alt="">
+      </div>
+      <span>Hỗ trợ kỹ Thuật BH Store</span></a>
+  </div>
+  <div class="button">
+    <a href="https://goo.gl/maps/hYDScw8M8hvdE6R29" target="_blank">
+      <div class="icon">
+        <img class="map" src="./assets/img/icon/GoogleMap_Icon.png" alt="">
+      </div>
+      <span>Xem đường dẫn đến BH Store</span></a>
+  </div>
+  <div class="button">
+    <div class="icon">
+      <i class="fa fa-phone"></i>
+    </div>
+    <a href="tel:0934.12.03.44"><span>Mr.Bảo (0934.12.03.44)</span></a>
+  </div>
+  <!-- src="views/template/frontend/images/GoogleMap_Icon.png" -->
+</div>
+
+<!-- Modal popup sending mail -->
+<div id="myModal" class="modal">
+
+<!-- Modal content -->
+<div class="modal-content">
+  <span class="close">&times;</span>
+  <h2>Để lại thông tin liên hệ</h2>
+  <form action="forms/contact.php" method="post" role="form" class="php-email-form mt-4">
+    <div class="row">
+      <div class="col-md-12 form-group mt-3">
+        <input type="text" name="name" class="form-control" id="name" placeholder="Họ và tên" required>
+      </div>
+      <div class="col-md-12 form-group mt-3">
+        <input type="email" class="form-control" name="email" id="email" placeholder="Email" required>
+      </div>
+    </div>
+    <div class="form-group mt-3">
+      <input type="text" class="form-control" name="subject" id="subject" placeholder="Tiêu đề" required>
+    </div>
+    <div class="form-group mt-3">
+      <textarea class="form-control" name="message" rows="5" placeholder="Lời nhắn" required></textarea>
+    </div>
+    <div class="my-3">
+      <div class="loading">Loading</div>
+      <div class="error-message"></div>
+      <div class="sent-message">Tư vấn đã được gửi, cảm ơn!</div>
+    </div>
+    <div class="text-center"><button type="submit">Gửi</button></div>
+  </form>
+</div>
+
+</div>
 
   
 <!-- Vendor JS Files -->
