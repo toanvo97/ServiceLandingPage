@@ -267,11 +267,6 @@
       }
     }
   });
- 
-  $(document).ready(function(){
-    $('.icon-box a').fancybox();
-    $('.content-thu a').fancybox();
-  });
 
   /**
    * Animation on scroll
