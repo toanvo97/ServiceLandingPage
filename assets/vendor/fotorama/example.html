@@ -41,6 +41,35 @@
 .thumbnail img:hover {
     transform: scale(1.2);
 }
+* { border:0; margin:0; padding:0; }
+		p { position:absolute; top:3px; right:28px; color:#555; font:bold 13px/1 sans-serif;}
+
+		/* these styles are for the demo, but are not required for the plugin */
+		.zoom {
+			display:inline-block;
+			position: relative;
+		}
+		
+		/* magnifying glass icon */
+		.zoom:after {
+			content:'';
+			display:block; 
+			width:33px; 
+			height:33px; 
+			position:absolute; 
+			top:0;
+			right:0;
+			background:url(icon.png);
+		}
+
+		.zoom img {
+			display: block;
+		}
+
+		.zoom img::selection { background-color: transparent; }
+
+		#ex2 img:hover { cursor: url(grab.cur), default; }
+		#ex2 img:active { cursor: url(grabbed.cur), default; }
   </style>
   <!-- jQuery -->
   <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
@@ -112,8 +141,7 @@
 
 <body>
 <div id="fb-root"></div>
-<script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v12.0" nonce="3Xle7ZvK"></script>
-
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v12.0" nonce="5MW7ASm2"></script>
 <div class="fb-comments" data-href="https://www.facebook.com/bhstore.page" data-width="100%" data-numposts="10"></div>
 
 <div class="img-zoom-container">
@@ -123,6 +151,8 @@
 <div class="thumbnail">
   <img src="1-lo.jpg">
 </div>
+
+<img id="zoom_10" src="1-lo.jpg" data-zoom-image="1-lo.jpg"/>
 <!-- Fotorama -->
 <!-- <div class="fotorama" data-width="700" data-ratio="700/467" data-max-width="100%">
   <img src="1-lo.jpg">
@@ -130,10 +160,16 @@
   <img src="9-lo.jpg">
   <img src="6-lo.jpg">
   <img src="5-lo.jpg">
-</div> -->z
-
+</div> -->
+<script>
+  $(document).ready(function(){
+  $('1-lo.jpg').zoom({url: '1-lo.jpg'});
+  });
+</script>
 <!-- © -->
-
+<script>
+  $("#zoom_10").elevateZoom({easing : true});
+</script>
 <script>
   // Initiate zoom effect:
   imageZoom("myimage", "myresult");
