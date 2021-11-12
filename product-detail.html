@@ -23,8 +23,8 @@
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="./assets/vendor/fotorama/fotorama.css" rel="stylesheet">
 
- 
   <link href="assets/css/style.css" rel="stylesheet">
   <link href="assets/css/custom.css" rel="stylesheet">
   
@@ -33,13 +33,88 @@
     .hidden{
       display: none;
     }
+    .img-zoom-container {
+      position: relative;
+    }
+
+    .img-zoom-lens {
+      position: absolute;
+      border: 1px solid #d4d4d4;
+      /*set the size of the lens:*/
+      width: 40px;
+      height: 40px;
+    }
+
+    .img-zoom-result {
+      border: 1px solid #d4d4d4;
+      /*set the size of the result div:*/
+      width: 300px;
+      height: 300px;
+    }
   </style>
 
+
   <link rel="stylesheet" href="./assets/vendor/fancybox/dist/jquery.fancybox.min.css">
+  <script>
+    function imageZoom(imgID, resultID) {
+      var img, lens, result, cx, cy;
+      img = document.getElementById(imgID);
+      result = document.getElementById(resultID);
+      /*create lens:*/
+      lens = document.createElement("DIV");
+      lens.setAttribute("class", "img-zoom-lens");
+      /*insert lens:*/
+      img.parentElement.insertBefore(lens, img);
+      /*calculate the ratio between result DIV and lens:*/
+      cx = result.offsetWidth / lens.offsetWidth;
+      cy = result.offsetHeight / lens.offsetHeight;
+      /*set background properties for the result DIV:*/
+      result.style.backgroundImage = "url('" + img.src + "')";
+      result.style.backgroundSize = (img.width * cx) + "px " + (img.height * cy) + "px";
+      /*execute a function when someone moves the cursor over the image, or the lens:*/
+      lens.addEventListener("mousemove", moveLens);
+      img.addEventListener("mousemove", moveLens);
+      /*and also for touch screens:*/
+      lens.addEventListener("touchmove", moveLens);
+      img.addEventListener("touchmove", moveLens);
+      function moveLens(e) {
+        var pos, x, y;
+        /*prevent any other actions that may occur when moving over the image:*/
+        e.preventDefault();
+        /*get the cursor's x and y positions:*/
+        pos = getCursorPos(e);
+        /*calculate the position of the lens:*/
+        x = pos.x - (lens.offsetWidth / 2);
+        y = pos.y - (lens.offsetHeight / 2);
+        /*prevent the lens from being positioned outside the image:*/
+        if (x > img.width - lens.offsetWidth) {x = img.width - lens.offsetWidth;}
+        if (x < 0) {x = 0;}
+        if (y > img.height - lens.offsetHeight) {y = img.height - lens.offsetHeight;}
+        if (y < 0) {y = 0;}
+        /*set the position of the lens:*/
+        lens.style.left = x + "px";
+        lens.style.top = y + "px";
+        /*display what the lens "sees":*/
+        result.style.backgroundPosition = "-" + (x * cx) + "px -" + (y * cy) + "px";
+      }
+      function getCursorPos(e) {
+        var a, x = 0, y = 0;
+        e = e || window.event;
+        /*get the x and y positions of the image:*/
+        a = img.getBoundingClientRect();
+        /*calculate the cursor's x and y coordinates, relative to the image:*/
+        x = e.pageX - a.left;
+        y = e.pageY - a.top;
+        /*consider any page scrolling:*/
+        x = x - window.pageXOffset;
+        y = y - window.pageYOffset;
+        return {x : x, y : y};
+      }
+    }
+    </script>
 </head>
 
 <body>
-
    <!-- ======= Header ======= -->
    <header id="header" class="fixed-top d-flex align-items-center">
     <div class="container">
@@ -87,9 +162,9 @@
     </div>
   </header>
   <!-- End Header -->
-
+  
   <main id="main">
-
+    
     <!-- ======= Breadcrumbs ======= -->
     <section id="breadcrumbs" class="breadcrumbs">
       <div class="container">
@@ -111,8 +186,8 @@
 
         <div class="row gy-4">
 
-          <div class="col-lg-8">
-            <div class="portfolio-details-slider swiper">
+          <div class="col-lg-6">
+            <!-- <div class="portfolio-details-slider swiper">
               <div class="swiper-wrapper align-items-center">
 
                 <div class="swiper-slide">
@@ -129,12 +204,21 @@
 
               </div>
               <div class="swiper-pagination"></div>
+            </div> -->
+            <div class="fotorama" data-arrows="false" data-nav="thumbs"  data-width="100%" data-max-width="100%" data-transition="slide" data-autoplay="true" data-clicktransition="crossfade">
+              <img id="myimage" src="assets/img/product/laptop-1.jpg" alt="">
+              <img id="myimage" src="assets/img/product/laptop-2.jpg" alt="">
+              <img id="myimage" src="assets/img/product/laptop.jpg" alt="">
             </div>
+           
           </div>
-
-          <div class="col-lg-4">
+       
+          <div class="col-lg-6">
             <div class="portfolio-info">
-              <h3>Thông tin sản phẩm</h3>
+              <h3>DELL 15 inch dòng Inspiron 3542</h3>
+              <h4>Thông tin chung</h4>
+              <p>Thương hiệu: <span class="brand-name">Dell</span> | Tình trạng: <span class="product-status">Còn hàng</span></p>
+              <p><span class="price">6.100.000₫</span> <del class="original-price">6.300.000₫</del></p> 
               <ul>
                 <li><strong>Bộ vi xử lí</strong> : Intel® Pentium 3558U 1.7GHZ</li>
                 <li><strong>Ram</strong> : 4 GB</li>
@@ -143,7 +227,8 @@
                 <li><strong>Card đồ họa</strong> : lntel HD Graphics</li>
               </ul>
             </div>
-            <div class="portfolio-description">
+            
+            <!-- <div class="portfolio-description">
               <h2>DELL 15 inch dòng Inspiron 3542 (màu đen)</h2>
               <p>
                 Dell inspiron 15 thế hệ 5 15.6″ có thiết kế mỏng nhẹ  21,4mm, nặng 2,13 kg, thời lượng pin từ 4- 6 giờ liên tục. Khung máy bằng chất liệu plastic màu đen có vân nhám chống vân tay. 
@@ -155,13 +240,103 @@
                 Pin sử dụng lâu 6 giờ
                 Camera HD mạnh mẽ với "Exmor for PC”
               </p>
-            </div>
+            </div> -->
           </div>
-
+         
         </div>
-
+        
+          <!-- Tab links -->  
+      <div class="tab">
+        <button class="tablinks" onclick="tabPanel(event, 'Description')" id="defaultOpen">Mô tả sản phẩm</button>
+        <button class="tablinks" onclick="tabPanel(event, 'Feature')" >Đặc điểm nổi bật</button>
+        <button class="tablinks" onclick="tabPanel(event, 'Warranty')">Thông tin bảo hành</button>
       </div>
-    </section><!-- End Portfolio Details Section -->
+
+      <!-- Tab content -->
+      <div id="Feature" class="tabcontent">
+        <h3>Đặc điểm nổi bật</h3>
+        <p>Laptop Dell Inspiron 3542 sở hữu một cấu hình khá tốt, thiết kế mới đẹp và sang trọng hơn, cùng mức giá rất hợp lý.
+          Dell Inspiron 3542 đang được bán ra tại thị trường Việt nam gồm có 4 model khác nhau về bộ xử lý và card đồ họa: Một model có vi xử lý Core i3 cùng card đồ họa Nvidia Geforce 2GB, một phiên bản dùng bộ xử lý Core i3 card đồ họa onboard HD Graphics 4400, một model tương tự như vậy nhưng được cài đặt sẵn Windows 8 bản quyền 64 bit, phiên bản còn lại chạy chip xử lý Core i5 có tích hợp card đồ họa rời Geforce 2GB.
+          
+          1. Thiết kế
+          Dell Inspiron 3542 mang một vẻ ngoài khá đơn giản, các góc cạnh được làm vuông vức, mặt lưng được phủ một lớp sơn nhám có thể chống bám bụi và vân tay tốt. Kết cấu của máy khá chắc chắn, thử nghiệm cho thấy bộ khung của máy không bị sao khi rơi ở độ cao 30 cm xuống đất (Khuyến cáo bạn đọc không nên thử vì đây là sự cố ngoài ý muốn)</p>
+      </div>
+
+      <div id="Description" class="tabcontent">
+        <h3>Thông số kỹ thuật</h3>
+        <p>Cấu hình nổi bật
+          Bộ vi xử lí :Intel® Pentium 3558U 1.7GHZ
+          Ram :4 GB
+          Đĩa cứng :500 GB
+          Màn hình :15.6" HD
+          Card đồ họa :lntel HD Graphics
+          Thương Hiệu
+          Thương hiệu :Dell
+          Dòng/Part sản phẩm :INSPIRON 3542
+          CPU
+          Bộ vi xử lí :Intel® Pentium 3558U 1.7GHZ
+          Bộ nhớ đệm :2M cache
+          RAM
+          Ram :4 GB
+          Loại Ram :DDR3L 1600Mhz
+          Hỗ trợ Ram tối đa :1600Mhz (4GB (SO-DIMM) x1) nâng cấp tối đa lên 8Gz
+          Đĩa Cứng
+          Đĩa cứng :500 GB
+          Loại đĩa cứng :Sata 5400rpm
+          Card đồ họa
+          Kiểu thiết kế VGA :lntel HD Graphics
+          Bộ nhớ đồ họa :2.0 G
+          Card đồ họa :lntel HD Graphics
+          Màn hình
+          Công nghệ màn hình :15.6 inch HD (13 66 x 768) Truelife LED-Backlit Display
+          Màn hình :15.6" HD
+          Hệ điều hành
+          Hệ Điều Hành :Windows® 10 64bit licence
+          Giao tiếp mạng
+          Chuẩn Wifi :Intel® 3160AC
+          Bluetooth :Chuẩn Bluetooth 4.0
+          Cổng kết nối & Audio
+          Audio :Stereo speakers professionally tuned with Waves MaxxAudio® Pro 1W x 2 = 2W total
+          Cổng Kết Nối :HDMI™ 1.4a, USB 3.0 (1), USB 2.0 (2), Security slot, Media Card (SD, SDHC, SDXC)
+          Pin/Battery
+          Thời gian sử dụng :Up to~5 hours of battery life
+          Tùy chọn theo máy (option)
+          Ổ đĩa quang :DVDRW
+          Camera :HD (720p) capable webcam, microphone
+          Đèn bàn phím :Full size, English keyboard . Có bàn phím số
+          Touchpad :Multi-touch gesture-enabled pad with integrated scrolling
+          Trọng lượng & kich thước
+          Kích Thước :21.4mm (0.84") x Width: 345mm (13.58") x Depth: 243mm (9.57")
+          Trọng Lượng :2.2 KG
+          Màu Sắc :Đen
+          Chất liệu máy :Plastic
+          Xuất Xứ / Tiêu chuẩn
+          Tiêu chuẩn hàng hóa :New full box
+          Xuất xứ :Nhập từ Mỹ
+          Thông tin khác
+          Tính Năng Nổi Bật :Âm thanh chất lượng cao với Waves MaxxAudio®</p>
+      </div>
+
+      <div id="Warranty" class="tabcontent">
+        <h3>Chính sách bảo hành</h3>
+        <p>Bảo hành 1 năm</p>
+      </div>
+      </div>
+
+    </section>
+    <!-- End Portfolio Details Section -->
+    <!-- <div class="img-zoom-container">
+      <img id="myimage" src="./assets/img/background-bh.jpg" width="300" height="240">
+      <div id="myresult" class="img-zoom-result"></div>
+    </div> -->
+    <!-- <section id="comment" class="comment">
+      <div class="container">
+        <div id="fb-root"></div>
+        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v12.0" nonce="3Xle7ZvK"></script>
+
+        <div class="fb-comments" data-href="https://www.facebook.com/bhstore.page" data-width="100%" data-numposts="10"></div>
+      </div>
+    </section> -->
 
     <section id="suggestion" class="suggestion section-bg ">
       <div class="container">
@@ -253,8 +428,9 @@
         </div>
       </div>
     </section>
+    
   </main><!-- End #main -->
-
+  
  <!-- ======= Footer ======= -->
  <footer id="footer">
 
@@ -407,7 +583,10 @@
 </div>
 
 </div>
-
+<script>
+  // Initiate zoom effect:
+  imageZoom("myimage", "myresult");
+  </script>
   
 <!-- Vendor JS Files -->
 <script src="assets/vendor/aos/aos.js"></script>
@@ -423,6 +602,39 @@
 
 <!-- FancyBox for zoom in picture -->
 <script src="./assets/vendor/fancybox/dist/jquery.fancybox.min.js"></script>
+
+<!-- Fotorama for set up moving image -->
+<script src="./assets/vendor/fotorama/fotorama.js"></script>
+
+<script>
+   /**
+   * Portfolio-details tab panel
+   */
+    // Set tab by default
+   document.getElementById("defaultOpen").click();
+
+   function tabPanel(evt, tabName) {
+    // Declare all variables
+    var i, tabcontent, tablinks;
+  
+    // Get all elements with class="tabcontent" and hide them
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+      tabcontent[i].style.display = "none";
+    }
+  
+    // Get all elements with class="tablinks" and remove the class "active"
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+      tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+  
+    // Show the current tab, and add an "active" class to the button that opened the tab
+    document.getElementById(tabName).style.display = "block";
+    evt.currentTarget.className += " active";
+    }
+
+</script>
 </body>
 
 </html>
